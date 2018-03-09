@@ -123,7 +123,7 @@ if __name__ == '__main__':
     trader.train(training_data)
     
     money = 0
-    start, end = 0, len(testing_data)
+    start, end = 0, len(testing_data)-1
     
     with open(args.output, 'w') as output_file:
         condition = trader.condition
@@ -135,14 +135,5 @@ if __name__ == '__main__':
             if(condition == action and action != 0):
                 print(action, trader.condition)
             
-            if(action == 1):
-                money -= float(testing_data[i+1][0])
-            elif(action == -1):
-                money += float(testing_data[i+1][0])
             output_file.write(str(action)+'\n')
     
-    if(trader.condition == 1):
-        money += float(testing_data[end-1][3])
-    elif(trader.condition == -1):
-        money -= float(testing_data[end-1][3])
-    print(money)
