@@ -17,4 +17,4 @@ some ideas and experiments record
 https://nbviewer.jupyter.org/github/vic85821/stock-prediction/blob/master/trader.ipynb
 
 ## requirement
-run `pip3 install -r requirements.txt`
+run ` pip install -r requirements.txt`
