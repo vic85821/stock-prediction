@@ -46,10 +46,11 @@ class Trader():
             train_X.append(data[i-1])
             train_Y.append(self.checkCondition(data[i-1][0], data[i][0]))
         
-        validating_X = train_X[-150:]
-        validating_Y = train_Y[-150:]
-        train_X = train_X[:-150]
-        train_Y = train_Y[:-150]
+        split = int(len(data) * 0.1 * -1)
+        validating_X = train_X[split:]
+        validating_Y = train_Y[split:]
+        train_X = train_X[:split]
+        train_Y = train_Y[:split]
         
         # cross validation process
         #parameters = {'n_neighbors': [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]}
@@ -65,6 +66,7 @@ class Trader():
     def predict_action( self, data ):
         result = self.clf.predict(data)
         self.predict_result.append(result[0])
+
         if(result[0] >= 1):
             #rise
             if(self.condition == 1):
