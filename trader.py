@@ -137,5 +137,8 @@ if __name__ == '__main__':
             if(condition == action and action != 0):
                 print(action, trader.condition)
             
-            output_file.write(str(action)+'\n')
+            output_file.write(str(action))
+            
+            if(i != end-1):
+                output_file.write('\n')
     
